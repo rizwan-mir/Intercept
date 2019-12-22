@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Audits>
+  <Audit Currency="AUD" Amount="1500" Rate="1.5" Date="201-12-20" NewAmount="2250" />
+  <Audit Currency="AUD" Amount="100" Rate="1.5" Date="2019-12-20" NewAmount="150" />
+  <Audit Currency="USD" Amount="200" Rate="1.3" Date="2019-12-20" NewAmount="260" />
+</Audits>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Intercept.Models.Currency>
+
+@{
+    ViewBag.Title = "Audit";
+}
+
+<h2>Currency Converter</h2>
+
+<p>
+    @Html.ActionLink("New Conversion", "Index")
+    <br />
+    @using (Html.BeginForm("Home", "Intercept", FormMethod.Post))
+    {
+        @Html.Label("Filter by dates:");
+        @Html.TextBox("startDate", "{0:dd-MM-yyyy}", new { @class = "form-control", @type = "date" })
+        @Html.TextBox("endDate", "{0:dd-MM-yyyy}", new { @class = "form-control", @type = "date" })
+        <br />
+        <input type="submit" value="Filter" class="btn btn-default" />
+    }
+</p>
+<p></p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrToConvert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewAmount)
+        </th>
+    </tr>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.CurrToConvert.ToString()
+            </td>
+            <td>
+                @item.Rate.ToString()
+            </td>
+            <td>
+                @item.Amount.ToString()
+            </td>
+            <td>
+                @item.Date.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.NewAmount.ToString()
+            </td>
+        </tr>
+    }
+    </table>
