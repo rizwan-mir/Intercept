@@ -26,7 +26,15 @@ namespace Intercept.Controllers
                 currency.Rate = dataAccess.GetConversionRate(currency.CurrToConvert, currency.Date);
                 currency.NewAmount = currency.Amount * double.Parse(currency.Rate.ToString());
             }
-            return View(currency);
+
+            if (currency.Rate > 0)
+                return View(currency);
+            else
+            {
+                ModelState.AddModelError("", "Sorry we do not have a conversion rate for " + currency.Date.ToString("dd/MM/yyyy"));
+                //string errMsg = "Sorry we do not have a conversion rate for " + currency.Date.ToString("dd/MM/yyyy");
+                return View(currency);
+            }
         }
 
         public ActionResult Save(Currency currency)
